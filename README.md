@@ -1,12 +1,19 @@
 # Syntax Siege
 
-First-person sandbox shooter where you upgrade yourself by writing Python.
+First-person sandbox shooter for total beginners: you upgrade yourself by writing Python.
 
-Every mission teaches one idea (print, variables, math, if, loops, functions, lists, loops + if).
-Wrong code? You get a specific clue, then a bigger hint, and on the 3rd miss the answer.
-Solve it and you get an upgrade (gun, damage, auto-heal, burst fire, jump jets, shotgun, radar)
-and a wave of enemies to fight. After the last mission the terminal becomes a free sandbox
-where your code spawns enemies, builds boxes and changes physics.
+- **22 missions**: print, variables, math, strings, if, if/else, for loops, loop counters,
+  functions, parameters, lists, indexing/len, loop + if, while.
+- **Clues, not punishment**: wrong code gives a specific clue, then a bigger hint, and on the 3rd miss the answer.
+- **Reviews**: every few lessons a REVIEW mission repeats an idea with new names and numbers.
+  Each wrong review answer costs 6 ammo; solving one on the first try gives bonus ammo.
+- **Upgrades** from lessons: pistol, damage, armor, auto-heal, sprint, burst fire, grenades,
+  jump jets, sentry turret, shotgun, big magazine, radar, full auto.
+- **Waves** of enemies (grunts, fast runners, bosses) after each mission. Enemies drop ammo.
+- **Save slots**: 3 slots on the title screen. Progress auto-saves after each mission;
+  Esc opens the pause menu (save, save & quit to title, save & exit).
+- **Sandbox**: during waves and after the last mission the terminal runs free code that
+  spawns enemies, builds boxes and changes speed/jump/gravity.
 
 ## Run (works offline after install)
 
@@ -19,13 +26,14 @@ where your code spawns enemies, builds boxes and changes physics.
 |---|---|
 | WASD / mouse / Space | move, look, jump |
 | Left click / R | shoot / reload |
+| Shift / G / Q | sprint / grenade / place turret (once unlocked) |
 | T | open terminal (game pauses) |
 | F5 or RUN | run your code |
-| Esc | close terminal |
+| Esc | close terminal / pause menu |
 
-Progress saves to `save.json`; delete it to start over.
+Saves live in `saves.json`.
 
 ## Add a mission
 
-Append a `Mission(...)` to `MISSIONS` in `missions.py` with a `check(code)` function,
-two hints and the answer, then run `python test_missions.py`.
+Add a `Mission(...)` (lesson) or a `review_*` generator to `CURRICULUM` in `missions.py`,
+then run `python test_missions.py`. Lesson rewards are applied in `apply_reward` in `game.py`.
